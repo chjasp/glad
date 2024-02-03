@@ -1,2 +1,9 @@
 .ipynb_checkpoints
 .env
+.DS_Store
+./glad_app/server/gladenv/*
+glad_app/server/gladenv
+/glad_app/server/gladenv
+./glad_app/server/gladenv
+glad_app/server/gladenv/
+*.env
