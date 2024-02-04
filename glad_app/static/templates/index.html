@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Huberman Lab Advice App</title>
+    <link rel="stylesheet" type="text/css" href="/static/styles.css">
+    <script src="https://accounts.google.com/gsi/client" async></script>
+    <script src="https://cdn.jsdelivr.net/npm/jwt-decode/build/jwt-decode.min.js"></script>
+
+</head>
+<body>
+    <nav>
+        <a href="#" id="advice-link">Advice</a> |
+        <a href="#" id="videos-link">Videos</a>
+    </nav>
+    <div id="g_id_onload"
+        data-client_id="949011922332-2bc847koku897pa6qio468hvqts1sadu.apps.googleusercontent.com"
+        data-context="signin"
+        data-login_uri="http://localhost:8080"
+        data-callback="handleCredentialResponse">
+    </div>
+    <div id="advice-list"></div>
+    <script src="/static/app.js"></script>
+</body>
+</html>

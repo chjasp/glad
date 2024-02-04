@@ -1,0 +1,9 @@
+body {
+    font-family: Arial, sans-serif;
+}
+#advice-list {
+    margin-top: 20px;
+}
+.advice-item {
+    margin-bottom: 10px;
+}
