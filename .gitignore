@@ -1,9 +1,24 @@
-.ipynb_checkpoints
+# Frontend specific
+/01-react-frontend/.cache/
+/01-react-frontend/coverage/
+/01-react-frontend/public/
+/01-react-frontend/node_modules/
+
+# Backend specific
+/02-flask-backend/__pycache__/
+/02-flask-backend/dist/
+/02-flask-backend/build/
+/02-flask-backend/bevenv/
+
+# CR jobs specific
+/03-cr-jobs/__pycache__/
+/03-cr-jobs/dist/
+/03-cr-jobs/build/
+/03-cr-jobs/bevenv/
+
+# Environment files
 .env
-.DS_Store
-./glad_app/gladenv/*
-glad_app/gladenv
-/glad_app/gladenv
-./glad_app/gladenv
-glad_app/gladenv/
-*.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
