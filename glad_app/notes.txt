@@ -1,3 +1,0 @@
-[AUTH]
-- We need information about the user
-- Therefore, we use Google-Sign to get the user#s email
