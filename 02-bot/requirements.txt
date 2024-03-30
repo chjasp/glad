@@ -1,4 +1,7 @@
 tqdm
 python-dotenv
-aiogram
-openai
+Flask
+gunicorn
+python-telegram-bot
+pydantic-settings
+pydantic
