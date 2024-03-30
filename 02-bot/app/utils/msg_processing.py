@@ -17,7 +17,7 @@ client = OpenAI(api_key=settings.OPENAI_API_KEY)
 # --- (2) FUNCTIONS --- #
 
 def generate_chatgpt_reply(message: str) -> str:
-    logging.info(f">>> USER: \n\t{message.text}")
+    logging.info(f">>> USER: \n\t{message}")
 
     # Change to history
     history_prompt = "Hello, I'm your helpful assistant."
@@ -25,7 +25,7 @@ def generate_chatgpt_reply(message: str) -> str:
     response = client.chat.completions.create(
         messages=[
             {"role": "assistant", "content": history_prompt},
-            {"role": "user", "content": message.text}
+            {"role": "user", "content": message}
         ],
         model=settings.MODEL_NAME
     )

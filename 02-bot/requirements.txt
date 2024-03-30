@@ -1,5 +1,6 @@
 tqdm
 python-dotenv
+openai
 Flask
 gunicorn
 python-telegram-bot

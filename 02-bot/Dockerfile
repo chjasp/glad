@@ -16,10 +16,5 @@ COPY . .
 # Expose the port on which the Flask app will run
 EXPOSE 8080
 
-# Set the environment variables (if needed)
-# ENV TG_TOKEN=your_telegram_bot_token
-# ENV OPENAI_API_KEY=your_openai_api_key
-# ENV GPT_MODEL_NAME=your_gpt_model_name
-
 # Run the Flask application
-CMD ["python", "-m", "app.main.py"]
+CMD ["python", "-m", "app.main"]

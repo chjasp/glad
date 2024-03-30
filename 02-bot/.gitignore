@@ -1,5 +1,11 @@
+.vscode/
+
 botenv/
 .env
-.vscode/
+
 __pycache__/
 *.pyc
+
+deploy.sh
+set_webhook.sh
+init_setup.sh
