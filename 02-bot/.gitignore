@@ -9,3 +9,5 @@ __pycache__/
 deploy.sh
 set_webhook.sh
 init_setup.sh
+
+archive/
