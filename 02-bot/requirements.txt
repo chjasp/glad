@@ -1,8 +1,7 @@
-tqdm
 python-dotenv
 openai
-Flask
-gunicorn
+google-cloud-firestore
 python-telegram-bot
 pydantic-settings
 pydantic
+aiohttp

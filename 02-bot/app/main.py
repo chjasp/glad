@@ -1,46 +1,31 @@
 # main.py
 
-import logging
-import telegram
+from telegram import Update, Bot
+import asyncio
+from telegram.ext import Application, CommandHandler, ContextTypes, MessageHandler, filters
 from config.settings import Settings
 from app.utils.msg_processing import generate_chatgpt_reply
-from flask import Flask, request, jsonify
-
-
-# --- (1) SETUP --- #
-
-logging.basicConfig(level=logging.INFO,
-                    format="%(funcName)s - %(levelname)s - %(message)s")
 
 settings = Settings()
-bot = telegram.Bot(token=settings.TG_TOKEN)
-app = Flask(__name__)
 
+def main():
+    application = Application.builder().token(settings.TG_TOKEN).build()
 
-# --- (2) ENDPOINTS --- #
+    start_handler = CommandHandler("start", start)
+    message_handler = MessageHandler(filters.TEXT & ~filters.COMMAND, process_message)
 
-@app.route(f"/{settings.TG_TOKEN}", methods=["POST"])
-async def respond():
-    try:
-        update = telegram.Update.de_json(request.get_json(force=True), bot)
-        logging.info(update)
+    application.add_handler(start_handler)
+    application.add_handler(message_handler)
 
-        if hasattr(update, "message"):
-            chat_id = update.message.chat.id
-            text = update.message.text
-            response_msg = generate_chatgpt_reply(text)
-            await bot.send_message(chat_id=chat_id, text=response_msg)
-        else:
-            logging.info("The update does not contain a text message.")
-    except Exception as e:
-        logging.error(f"An error has occurred: {e}")
-        return jsonify({"error": "An unexpected error occurred"}), 500
+    application.run_polling()
 
-    return jsonify({"status": "success"}), 200
+async def start(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+    await context.bot.send_message(chat_id=update.effective_chat.id, text="Hello! I'm your health bot.")
 
-
-# --- (3) APP STARTUP --- #
-
+async def process_message(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+    user_message = update.message.text
+    response_message = await generate_chatgpt_reply(user_message)
+    await context.bot.send_message(chat_id=update.effective_chat.id, text=response_message)
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=8080)
+    main()
